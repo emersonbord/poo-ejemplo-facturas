@@ -1,9 +1,6 @@
 package org.eborda.ejemplofacturas;
 
-import org.eborda.ejemplofacturas.modelo.Cliente;
-import org.eborda.ejemplofacturas.modelo.DetalleFactura;
-import org.eborda.ejemplofacturas.modelo.Factura;
-import org.eborda.ejemplofacturas.modelo.Producto;
+import org.eborda.ejemplofacturas.modelo.*;
 
 import java.util.Scanner;
 
@@ -22,33 +19,28 @@ public class EjemploFactura {
 
         Producto producto;
 
-        String nombre;
+        /***String nombre;
         float precio;
-        int cantidad;
+        int cantidad;*/
 
         System.out.println();
 
         for(int i = 0; i<5; i++){
             producto = new Producto();
             System.out.print("Ingrese producto n° " + producto.getCodigo() + ": ");
-            nombre = s.next();
-
-            producto.setNombre(nombre);
+            producto.setNombre(s.nextLine());
 
             System.out.print("Ingrese el precio: ");
-            precio = s.nextFloat();
-            producto.setPrecio(precio);
+            producto.setPrecio(s.nextFloat());
 
             System.out.print("Ingrese la cantidad: ");
-            cantidad = s.nextInt();
 
-            DetalleFactura detalle = new DetalleFactura(cantidad, producto);
-
-            factura.addDetalleFactura(detalle);
+            factura.addDetalleFactura(new DetalleFactura(s.nextInt(), producto));
 
             System.out.println();
+            s.nextLine();
         }
-        System.out.println(factura.generarDetalle());
+        System.out.println(factura);
 
     }
 }
